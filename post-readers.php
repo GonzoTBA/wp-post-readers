@@ -14,6 +14,11 @@ License: GPL2
 global $pu_db_version;
 $pu_db_version = '1.0';
 
+/**
+ * pu_install Creates a posts_users table to host the required information
+ *
+ * @return void
+ */
 function pu_install() {
 	global $wpdb;
 	global $pu_db_version;
@@ -40,8 +45,11 @@ function pu_install() {
 
 register_activation_hook( __FILE__, 'pu_install' );
 
-
-// Saves user_id in the post_meta table
+/**
+ * post_readers_save Saves user_id in the posts_users table
+ *
+ * @return void
+ */
 function post_readers_save() {
     // Needed in order to access the db
     global $wpdb;
@@ -75,7 +83,12 @@ function post_readers_save() {
 add_action( 'template_redirect', 'post_readers_save');
 
 
-// Shows the list of users who have read the post
+/**
+ * post_readers_show Shows the list of users who have read the post
+ *
+ * @param  mixed $content
+ * @return void
+ */
 function post_readers_show($content) {
     global $wpdb;
 
@@ -113,10 +126,14 @@ function post_readers_show($content) {
 add_filter("the_content", "post_readers_show");
 
 
-// Load custom CSS 
-function post_readers_init() {
-    wp_register_style('post_readers_init', plugins_url('style.css',__FILE__ ));
-    wp_enqueue_style('post_readers_init');
+/**
+ * post_readers_css Load custom CSS 
+ *
+ * @return void
+ */
+function post_readers_css() {
+    wp_register_style('post_readers_css', plugins_url('style.css',__FILE__ ));
+    wp_enqueue_style('post_readers_css');
 }
 
-add_action( 'wp_enqueue_scripts','post_readers_init');
+add_action( 'wp_enqueue_scripts','post_readers_css');
