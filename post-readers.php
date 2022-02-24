@@ -111,3 +111,12 @@ function post_readers_show($content) {
 }
 
 add_filter("the_content", "post_readers_show");
+
+
+// Load custom CSS 
+function post_readers_init() {
+    wp_register_style('post_readers_init', plugins_url('style.css',__FILE__ ));
+    wp_enqueue_style('post_readers_init');
+}
+
+add_action( 'wp_enqueue_scripts','post_readers_init');
