@@ -14,6 +14,7 @@ License: GPL2
 global $pu_db_version;
 $pu_db_version = '1.0';
 
+
 /**
  * pu_install Creates a posts_users table to host the required information
  *
@@ -44,6 +45,7 @@ function pu_install() {
 }
 
 register_activation_hook( __FILE__, 'pu_install' );
+
 
 /**
  * post_readers_save Saves user_id in the posts_users table
