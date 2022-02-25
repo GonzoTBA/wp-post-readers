@@ -10,10 +10,11 @@ Author URI: elsentidodelavida.net
 License: GPL2
 */
 
+defined('ABSPATH') or die("Bye bye");
+
 // Install, on plugin activation, new table to relate posts and users.
 global $pu_db_version;
 $pu_db_version = '1.0';
-
 
 /**
  * pu_install Creates a posts_users table to host the required information
