@@ -95,7 +95,7 @@ add_action( 'template_redirect', 'post_readers_save');
 function post_readers_show($content) {
     global $wpdb;
 
-    if ( is_singular() && is_super_admin( $user_id = false ) ) {
+    if ( is_singular() && is_single() && is_super_admin( $user_id = false ) ) {
         // Get all users who have read this post
         $post = get_post();
         $post_id = $post->ID;
